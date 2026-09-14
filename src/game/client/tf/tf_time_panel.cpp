@@ -812,7 +812,7 @@ void CTFHudTimeStatus::OnThink()
 		m_flNextThink = gpGlobals->curtime + 0.1f;
 	}
 
-	if ( TFGameRules() && TFGameRules()->IsInArenaMode() == true && tf_arena_round_time.GetInt() > 0 )
+	if ( TFGameRules() && TFGameRules()->IsInArenaMode() && tf_arena_round_time.GetInt() > 0 && !ShouldUseMatchHUD() )
 	{
 		CHudArenaPlayerCount *pPlayerCount = ( CHudArenaPlayerCount * )GET_HUDELEMENT( CHudArenaPlayerCount );
 
