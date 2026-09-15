@@ -812,12 +812,13 @@ void CTFHudTimeStatus::OnThink()
 		m_flNextThink = gpGlobals->curtime + 0.1f;
 	}
 
+
+	int iSelfX, iSelfY;
+	GetPos( iSelfX, iSelfY );
+
 	if ( TFGameRules() && TFGameRules()->IsInArenaMode() && tf_arena_round_time.GetInt() > 0 && !ShouldUseMatchHUD() )
 	{
-		CHudArenaPlayerCount *pPlayerCount = ( CHudArenaPlayerCount * )GET_HUDELEMENT( CHudArenaPlayerCount );
-
-		int iSelfX, iSelfY;
-		GetPos( iSelfX, iSelfY );
+		CHudArenaPlayerCount *pPlayerCount = GET_HUDELEMENT( CHudArenaPlayerCount );
 
 		if ( pPlayerCount && pPlayerCount->IsVisible() )
 		{
@@ -830,6 +831,10 @@ void CTFHudTimeStatus::OnThink()
 		{
 			SetPos( iSelfX, 0 );
 		}
+	}
+	else
+	{
+		SetPos( iSelfX, 0 );
 	}
 }
 
